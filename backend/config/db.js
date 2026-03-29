@@ -12,7 +12,7 @@ const db = mysql.createPool({
 
   
   ssl: {
-    rejectUnauthorized: true
+    rejectUnauthorized: false
   }
 }).promise();
 
