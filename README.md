@@ -1,20 +1,30 @@
 🧾 AI-Powered Complaint Management System
 
-A full-stack web application that enables users to submit complaints and interact with an AI assistant for guidance. The system includes intelligent complaint categorization, draft response generation, and an admin-controlled workflow with email notifications upon approval.
+A full-stack web application that allows users to submit complaints and interact with an AI assistant for guidance. The system leverages AI to automatically categorize complaints and generate draft responses, while maintaining an admin-controlled approval workflow with email notifications.
 
-🚀 Features
-🤖 AI-powered chatbot for user queries and complaint assistance
-📝 Users can submit complaints without registration
-🧠 AI automatically categorizes complaints
-✍️ AI-generated draft responses for complaints
-👨‍💼 Admin-only access for managing complaints
-✅ Admin approval workflow before sending responses
-📧 Email notifications sent to users after admin approval
-📊 Admin dashboard for managing and tracking complaints
-🔍 Complaint status tracking and management
-⚡ RESTful API built with Node.js & Express
-🗄️ MySQL database integration
-🛠️ Tech Stack
+🚀 Live Demo
+
+🔗 Frontend: https://wabi-user-management.netlify.app/
+
+🔗 Backend API: (Add your Render/Server link here)
+
+✨ Key Features
+🤖 AI Capabilities
+AI-powered chatbot for user support and guidance
+Automatic complaint categorization
+AI-generated draft responses for submitted complaints
+👤 User Features
+Submit complaints without registration
+Track complaint status
+Interact with AI assistant
+👨‍💼 Admin Features
+Secure admin-only access
+Review and manage complaints
+Edit and approve AI-generated responses
+Send final responses via email
+Dashboard for monitoring and tracking complaints
+📧 Notification System
+Email notifications sent after admin approval
 
 Frontend:
 
