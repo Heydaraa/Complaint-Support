@@ -18,8 +18,8 @@ It also includes an **admin-controlled approval workflow** with email notificati
 
 ## 🚀 Live Demo
 
-- 🌐 Frontend: https://wabi-user-management.netlify.app/  
-- ⚙️ Backend API: *(Add your Render link here)*  
+- 🌐 Frontend: https://customer-support-hayidar.netlify.app 
+    
 
 ---
 
