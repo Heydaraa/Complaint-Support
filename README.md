@@ -26,35 +26,31 @@ Dashboard for monitoring and tracking complaints
 📧 Notification System
 Email notifications sent after admin approval
 
-Frontend:
-
-React / HTML / Tailwind CSS / JavaScript
-
-Backend:
-
+🛠️ Tech Stack
+Frontend
+React
+Tailwind CSS
+JavaScript
+Backend
 Node.js
 Express.js
-
-Database:
-
+Database
 MySQL
-
-Other:
-
-AI API integration
-Nodemailer (email service)
+Other Tools & Libraries
+AI API Integration
+Nodemailer (Email Service)
 Axios
 dotenv
 CORS
-⚙️ Local Setup Instructions
-1. Clone the repository
+⚙️ Local Development Setup
+1. Clone Repository
 git clone https://github.com/Heydaraa/Complaint-Support.git
-cd your-repo-name
+cd Complaint-Support
 2. Backend Setup
 cd backend
 npm install
 
-Create a .env file in the backend folder:
+Create a .env file in the backend directory:
 
 DB_HOST=localhost
 DB_USER=root
@@ -65,21 +61,21 @@ DB_PORT=3306
 PORT=5000
 JWT_SECRET=your_secret_key
 
-# AI API (if used)
+# AI API
 AI_API_KEY=your_api_key
 
-# Email configuration
+# Email Configuration
 EMAIL_USER=your_email@example.com
 EMAIL_PASS=your_email_password
 
-Run the backend:
+Run the backend server:
 
 npm start
 3. Database Setup (MySQL)
-Start MySQL using XAMPP or MySQL Workbench
-Create database:
+Start MySQL (via XAMPP or MySQL Workbench)
+Create a database:
 CREATE DATABASE your_database_name;
-Import or create required tables based on your schema
+Import or create tables based on your schema
 4. Frontend Setup
 cd ../frontend
 npm install
@@ -87,20 +83,28 @@ npm run dev
 ▶️ Running the Application
 Start MySQL server
 Start backend server
-Start frontend application
-Open browser:
-http://localhost:5173
-📌 System Workflow
-Users can:
-Ask questions via AI chat
-Submit complaints
-AI system:
+Start frontend development server
+Open your browser:
+👉 http://localhost:5173
+🔄 System Workflow
+User
+Interacts with AI chatbot
+Submits complaints
+AI System
 Categorizes complaints
 Generates draft responses
-Admin:
+Admin
 Reviews complaints
-Edits/approves responses
+Edits and approves responses
 Sends final response via email
+📁 Project Structure
+Complaint-Support/
+│── frontend/     # React client
+│── backend/      # Node.js + Express API
+📌 Notes
+Ensure environment variables are properly configured
+Email service requires valid credentials
+AI features depend on API availability
 📄 License
 
 This project is developed for educational and internship purposes.
