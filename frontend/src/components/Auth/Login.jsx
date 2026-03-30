@@ -29,10 +29,6 @@ function Login({ goToSignup }) {
       <p className="text-center text-sm text-gray-500 mb-6">
        Default Login → Email: admin@gmail.com | Password: admin123
    </p>
-<<<<<<< HEAD
-
-=======
->>>>>>> 8f8c29d75b56708546da3888cb0f94dfe32f286d
       {msg && (
         <p className="text-center text-sm mb-4 text-red-500">{msg}</p>
       )}
