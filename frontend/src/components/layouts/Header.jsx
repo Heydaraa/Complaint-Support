@@ -1,34 +1,50 @@
 import { Sun, Moon, Sparkles, Menu, Bot } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getProfile } from "../../services/authApi";
 import { fetchSettings } from "../../services/settingsService";
 
 function Header({ dark, setDark, setSidebarOpen, setAiOpen }) {
   const BACKEND_URL = "http://localhost:5000";
+
   const [user, setUser] = useState({});
   const [company, setCompany] = useState({});
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // 🔹 Detect if current page is admin
+  const isAdminPage = location.pathname.startsWith("/admin");
+
   useEffect(() => {
-    getProfile().then(res => setUser(res.data.user || {})).catch(() => {});
-    fetchSettings().then(res =>
-      setCompany({
-        name: res.data.company_name || "Your Company",
-        logo: res.data.logo ? BACKEND_URL + res.data.logo : ""
-      })
-    ).catch(() => {});
+    getProfile()
+      .then(res => setUser(res.data.user || {}))
+      .catch(() => {});
+
+    fetchSettings()
+      .then(res =>
+        setCompany({
+          name: res.data.company_name || "Your Company",
+          logo: res.data.logo ? BACKEND_URL + res.data.logo : ""
+        })
+      )
+      .catch(() => {});
   }, []);
 
   const isLogged = !!user.username;
   const name = isLogged ? user.username : "Customer";
   const role = isLogged ? user.role : "User";
+
   const avatar = user.avatar
-    ? user.avatar.startsWith("http") ? user.avatar : BACKEND_URL + user.avatar
+    ? user.avatar.startsWith("http")
+      ? user.avatar
+      : BACKEND_URL + user.avatar
     : null;
 
   return (
     <header className="h-14 border-b-4 border-gray-300 bg-white dark:bg-gray-900 flex items-center justify-between px-4 lg:px-6">
       
-     
+      {/* LEFT */}
       <div className="flex items-center gap-2 font-semibold text-blue-600">
         <button
           onClick={() => setSidebarOpen(true)}
@@ -51,21 +67,37 @@ function Header({ dark, setDark, setSidebarOpen, setAiOpen }) {
         <span className="hidden sm:block">{company.name}</span>
       </div>
 
-      
+      {/* CENTER */}
       <h1 className="font-bold text-sm sm:text-base md:text-xl dark:text-white">
-       AI Complaint Assistance System
+        AI Complaint Assistance System
       </h1>
 
-      
+      {/* RIGHT */}
       <div className="flex items-center gap-3">
+
+        {/* ✅ Admin Login Button (ONLY for customer pages) */}
+        {!isAdminPage && !isLogged && (
+          <button
+            onClick={() => navigate("/login")}
+            className="px-3 py-1.5 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 transition"
+          >
+            Admin Login
+          </button>
+        )}
+
+        {/* Dark mode toggle */}
         <button
           onClick={() => setDark(!dark)}
           className="p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
         >
-          {dark ? <Sun size={18} className="text-yellow-400" /> : <Moon size={18} />}
+          {dark ? (
+            <Sun size={18} className="text-yellow-400" />
+          ) : (
+            <Moon size={18} />
+          )}
         </button>
 
-       
+        {/* AI button (mobile) */}
         <button
           onClick={() => setAiOpen(true)}
           className="lg:hidden p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -73,27 +105,40 @@ function Header({ dark, setDark, setSidebarOpen, setAiOpen }) {
           <Bot size={20} className="dark:text-white" />
         </button>
 
+        {/* USER INFO */}
         <div className="flex items-center gap-2">
           {isLogged ? (
             <>
               {avatar ? (
-                <img src={avatar} alt={name} className="w-8 h-8 rounded-full object-cover" />
+                <img
+                  src={avatar}
+                  alt={name}
+                  className="w-8 h-8 rounded-full object-cover"
+                />
               ) : (
                 <div className="w-8 h-8 bg-gray-400 flex items-center justify-center rounded-full text-white font-bold">
                   {name.charAt(0)}
                 </div>
               )}
               <div className="hidden sm:block">
-                <p className="text-sm font-semibold dark:text-gray-100">{name}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">{role}</p>
+                <p className="text-sm font-semibold dark:text-gray-100">
+                  {name}
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  {role}
+                </p>
               </div>
             </>
           ) : (
             <div className="flex items-center gap-2">
               <Sparkles size={22} className="text-blue-500" />
               <div className="hidden sm:block">
-                <p className="text-sm font-semibold dark:text-gray-100">{name}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">{role}</p>
+                <p className="text-sm font-semibold dark:text-gray-100">
+                  {name}
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  {role}
+                </p>
               </div>
             </div>
           )}
